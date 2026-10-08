@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -41,7 +40,6 @@ return new class extends Migration
             $table->index(['resource_b_id', 'relation_type_id'], 'rr_links_b_type_idx');
         });
     }
-
     public function down(): void
     {
         Schema::dropIfExists('resource_relation_links');
