@@ -137,27 +137,4 @@ php artisan package:removerequire jevo/jrelations
 
 GPL-3.0-or-later.
 
-## Публікація стабільної версії 1.0.0
 
-Composer визначає версію пакета за Git-тегом; поле `version` у `composer.json`
-навмисно не задається.
-
-1. Створіть публічний GitHub-репозиторій `Juniorbuka/jRelations` і завантажте
-   до нього вміст цього каталогу.
-2. Створіть стабільний тег `1.0.0` і відправте його разом із гілкою `main`:
-
-   ```bash
-   git tag 1.0.0
-   git push origin main
-   git push origin 1.0.0
-   ```
-
-3. Додайте `https://github.com/Juniorbuka/jRelations` на Packagist як новий
-   пакет і ввімкніть GitHub auto-update webhook, якщо Packagist його запропонує.
-4. Переконайтеся, що Packagist показує стабільний реліз `1.0.0`. Після цього
-   команда встановлення з цього README працюватиме на сайтах через Composer.
-
-Додавання до каталогу Evolution CMS `evolution-cms-packages` для команди
-`php artisan extras package` є окремим, необов’язковим кроком. Для способу
-встановлення через `package:installrequire`, як у jDirectory, достатньо
-публічного Git-тегу та доступного Composer-пакета в Packagist.
