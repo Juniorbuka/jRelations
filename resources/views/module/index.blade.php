@@ -21,30 +21,6 @@
     @endif
 
     <section class="card mb-3">
-        <div class="card-header"><strong>{{ $t('templates_title') }}</strong></div>
-        <div class="card-body">
-            <p>{{ $t('templates_help') }}</p>
-            <form method="post" action="{{ route('jRelations.templates.save') }}">
-                @csrf
-                <div class="row">
-                    @foreach ($templates as $template)
-                        <label class="col-md-4 mb-2">
-                            <input
-                                type="checkbox"
-                                name="templates[]"
-                                value="{{ $template->id }}"
-                                @checked(in_array((int) $template->id, $selectedTemplates, true))
-                            >
-                            {{ $template->templatename }} <small class="text-muted">#{{ $template->id }}</small>
-                        </label>
-                    @endforeach
-                </div>
-                <button class="btn btn-primary" type="submit">{{ $t('save_templates') }}</button>
-            </form>
-        </div>
-    </section>
-
-    <section class="card mb-3">
         <div class="card-header"><strong>{{ $t('types_title') }}</strong></div>
         <div class="card-body">
             <form method="post" action="{{ route('jRelations.types.store') }}" class="mb-4">
@@ -73,7 +49,6 @@
                                             type="checkbox"
                                             name="templates[]"
                                             value="{{ $template->id }}"
-                                            @disabled(!in_array((int) $template->id, $selectedTemplates, true))
                                         >
                                         {{ $template->templatename }} <small class="text-muted">#{{ $template->id }}</small>
                                     </label>
