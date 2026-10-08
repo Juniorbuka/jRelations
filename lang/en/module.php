@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => 'jRelations — Resource Relations',
+    'title' => 'Resource Relations',
     'description' => 'Configure relation types and resource templates.',
     'templates_title' => 'Templates with the Relations tab',
     'templates_help' => 'The tab is shown only for resources using selected templates.',
