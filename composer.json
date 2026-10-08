@@ -1,0 +1,33 @@
+{
+  "name": "jevo/jrelations",
+  "description": "Двосторонні зв’язки між ресурсами для Evolution CMS",
+  "type": "library",
+  "license": "GPL-3.0-or-later",
+  "keywords": [
+    "evolutioncms",
+    "evo",
+    "relations",
+    "resources",
+    "jrelations"
+  ],
+  "require": {
+    "php": "^8.3",
+    "evolution-cms/evolution": "^3.5.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "Jevo\\JRelations\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Jevo\\JRelations\\JRelationsServiceProvider"
+      ]
+    }
+  },
+  "support": {
+    "issues": "https://github.com/Juniorbuka/jRelations/issues",
+    "source": "https://github.com/Juniorbuka/jRelations"
+  }
+}
