@@ -4,7 +4,6 @@ namespace Jevo\JRelations\Http\Controllers;
 
 use EvolutionCMS\Legacy\Permissions;
 use EvolutionCMS\Models\SiteContent;
-use Jevo\JRelations\Models\RelationTemplate;
 use Jevo\JRelations\Models\RelationType;
 use Jevo\JRelations\JRelationsService;
 use Illuminate\Http\JsonResponse;
@@ -99,11 +98,6 @@ class RelationsController
     {
         $this->assertCanEditDocuments();
         $document = $this->assertCanEditResource($resource);
-
-        $this->ensure(
-            RelationTemplate::query()->where('template_id', $document->template)->exists(),
-            403
-        );
 
         $relationType = RelationType::query()
             ->whereKey($type)
