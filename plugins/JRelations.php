@@ -1,6 +1,5 @@
 <?php
 
-use Jevo\JRelations\Models\RelationTemplate;
 use Jevo\JRelations\Models\RelationType;
 use Illuminate\Support\Facades\Event;
 
@@ -8,10 +7,7 @@ Event::listen('evolution.OnDocFormRender', function (array $params): string {
     $templateId = (int) ($params['template'] ?? 0);
     $resourceId = (int) ($params['id'] ?? 0);
 
-    if (
-        $templateId === 0
-        || !RelationTemplate::query()->where('template_id', $templateId)->exists()
-    ) {
+    if ($templateId === 0) {
         return '';
     }
 
