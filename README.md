@@ -61,7 +61,6 @@ php artisan view:clear
 Пакет передає в Blade-перегляди змінні:
 
 - `$jRelations` — опубліковані пов’язані ресурси, згруповані за ключем типу;
-- `$jRelationsLocale` — мова `uk` або `en`.
 
 Щоб показати **всі зв’язки поточного ресурсу за всіма типами**, додайте
 стандартний список у потрібне місце шаблону:
@@ -69,7 +68,6 @@ php artisan view:clear
 ```blade
 @include('jRelations::frontend.list', [
     'relations' => $jRelations,
-    'locale' => $jRelationsLocale,
 ])
 ```
 
@@ -79,11 +77,7 @@ php artisan view:clear
 ```blade
 @foreach ($jRelations as $relation)
     <section class="related-resources">
-        <h2>
-            {{ $jRelationsLocale === 'en' && $relation['type']->name_en
-                ? $relation['type']->name_en
-                : $relation['type']->name_uk }}
-        </h2>
+        <h2>{{ $relation['type']->name_uk }}</h2>
 
         <ul>
             @foreach ($relation['resources'] as $resource)
@@ -101,6 +95,9 @@ php artisan view:clear
 Пошук ресурсів у менеджері та отримання пов’язаних ресурсів на сайті побудовані
 на моделі **`EvolutionCMS\Models\SiteContent`**. Пакету **DocLister не потрібно**:
 jRelations не використовує DocLister і не вимагає його встановлення.
+
+Докладніше про роботу з деревом документів через `SiteContent`:
+[«Робота з деревом документів через SiteContent»](https://gist.github.com/Juniorbuka/b6f4680477338bd39bd09ae9277d766b#%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D0%B0-%D0%B7-%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D0%BE%D0%BC-%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%96%D0%B2-%D1%87%D0%B5%D1%80%D0%B5%D0%B7-sitecontent).
 
 Або отримайте зв’язки безпосередньо через сервіс:
 
@@ -135,5 +132,3 @@ php artisan package:removerequire jevo/jrelations
 ## Ліцензія
 
 GPL-3.0-or-later.
-
-
