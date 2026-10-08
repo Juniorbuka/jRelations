@@ -8,7 +8,6 @@ Route::name('jRelations.')->group(function (): void {
     Route::get('/', [ModuleController::class, 'index'])->name('index');
     Route::post('/types', [ModuleController::class, 'storeType'])->name('types.store');
     Route::post('/types/{type}/delete', [ModuleController::class, 'deleteType'])->name('types.delete');
-    Route::post('/templates', [ModuleController::class, 'saveTemplates'])->name('templates.save');
 
     Route::get('/resources/search', [RelationsController::class, 'search'])->name('resources.search');
     Route::get('/resources/{resource}/relations', [RelationsController::class, 'index'])->name('resources.relations');
