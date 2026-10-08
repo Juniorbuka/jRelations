@@ -4,20 +4,20 @@ namespace Jevo\JRelations;
 
 use EvolutionCMS\Models\SiteContent;
 use Jevo\JRelations\Models\RelationType;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Support\Facades\DB;
 
 class JRelationsService
 {
     /**
-     * @var array<int, array<string, array{type: RelationType, resources: Collection<int, SiteContent>}>>
+     * @var array<int, array<string, EloquentCollection<int, SiteContent>>>
      */
     private array $resourceCache = [];
 
     /**
-     * Return active related resources grouped by relation type for one resource.
+     * Return active related resources keyed by relation type slug for one resource.
      *
-     * @return array<string, array{type: RelationType, resources: Collection<int, SiteContent>}>
+     * @return array<string, EloquentCollection<int, SiteContent>>
      */
     public function forResource(int $resourceId): array
     {
@@ -59,18 +59,26 @@ class JRelationsService
                 ->active()
                 ->withoutProtected()
                 ->whereIn('site_content.id', $ids)
+                ->with(['tpl.tvs', 'templateValues'])
                 ->orderBy('site_content.pagetitle')
                 ->get();
 
             if ($resources->isNotEmpty()) {
-                $result[$type->slug] = [
-                    'type' => $type,
-                    'resources' => $resources,
-                ];
+                $result[$type->slug] = $resources;
             }
         }
 
         return $this->resourceCache[$resourceId] = $result;
+    }
+
+    /**
+     * Return active related resources for one relation type key.
+     *
+     * @return EloquentCollection<int, SiteContent>
+     */
+    public function forResourceType(int $resourceId, string $relationKey): EloquentCollection
+    {
+        return $this->forResource($resourceId)[$relationKey] ?? new EloquentCollection();
     }
 
     /**
