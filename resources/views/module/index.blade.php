@@ -4,15 +4,15 @@
     $t = fn (string $key): string => trans('jRelations::module.' . $key, [], $language);
 @endphp
 <style>
-    .rr-template-list {
+    .row.rr-template-list {
         margin-left: 0;
         margin-right: 0;
     }
 </style>
 
 @section('content')
-    <h1><i class="fa fa-link"></i> {{ $t('title') }}</h1>
-    <p>{{ $t('description') }}</p>
+    <h1><x-tabler-link aria-hidden="true" /> {{ $t('title') }}</h1>
+    <p style="margin-left: 5px;">{{ $t('description') }}</p>
 
     @if (session('status'))
         <div class="alert alert-success">{{ session('status') }}</div>
