@@ -14,7 +14,7 @@ class JRelationsServiceProvider extends ServiceProvider
         $this->app->registerRoutingModule(
             'Зв’язки ресурсів',
             dirname(__DIR__) . '/routes.php',
-            'fa fa-link'
+            'tabler-link'
         );
     }
 
