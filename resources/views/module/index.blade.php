@@ -11,7 +11,7 @@
 </style>
 
 @section('content')
-    <h1><x-tabler-link aria-hidden="true" /> {{ $t('title') }}</h1>
+    <h1>{!! svg('tabler-link', ['aria-hidden' => 'true'])->toHtml() !!} {{ $t('title') }}</h1>
     <p style="margin-left: 5px;">{{ $t('description') }}</p>
 
     @if (session('status'))
