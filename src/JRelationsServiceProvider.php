@@ -12,7 +12,7 @@ class JRelationsServiceProvider extends ServiceProvider
         $this->loadPluginsFrom(dirname(__DIR__) . '/plugins/');
         $this->app->singleton(JRelationsService::class);
         $this->app->registerRoutingModule(
-            'jRelations — Зв’язки ресурсів',
+            'Зв’язки ресурсів',
             dirname(__DIR__) . '/routes.php',
             'fa fa-link'
         );
