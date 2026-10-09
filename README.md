@@ -32,7 +32,7 @@ php artisan view:clear
 ```
 
 Перевірте, що Composer встановив пакет у `core/vendor/jevo/jrelations`, а в
-менеджері Evolution CMS з’явився модуль **«jRelations — Зв’язки ресурсів»**.
+менеджері Evolution CMS з’явився модуль **«Зв’язки ресурсів»**.
 
 > Перед запуском міграцій перевірте конфігурацію підключення до бази даних.
 > Якщо Artisan повідомляє `APPLICATION IN PRODUCTION`, переконайтеся, що це
