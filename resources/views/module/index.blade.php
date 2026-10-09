@@ -3,6 +3,12 @@
 @php
     $t = fn (string $key): string => trans('jRelations::module.' . $key, [], $language);
 @endphp
+<style>
+    .rr-template-list {
+        margin-left: 0;
+        margin-right: 0;
+    }
+</style>
 
 @section('content')
     <h1><i class="fa fa-link"></i> {{ $t('title') }}</h1>
@@ -42,7 +48,7 @@
                         <fieldset>
                             <legend class="h6">{{ $t('type_templates') }}</legend>
                             <p class="text-muted">{{ $t('type_templates_help') }}</p>
-                            <div class="row">
+                            <div class="row rr-template-list">
                                 @foreach ($templates as $template)
                                     <label class="col-md-4 mb-2">
                                         <input
