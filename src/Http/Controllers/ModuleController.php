@@ -17,8 +17,11 @@ class ModuleController
         $this->ensure(evo()->hasPermission('exec_module'), 403);
 
         $language = $this->language();
+        $view = class_exists(\EvoUI\Support\ManagerContext::class)
+            ? 'jRelations::module.index-evo'
+            : 'jRelations::module.index';
 
-        return view('jRelations::module.index', [
+        return view($view, [
             'types' => RelationType::query()->with('templates')->orderBy('id')->get(),
             'templates' => SiteTemplate::query()->orderBy('templatename')->get(),
             'language' => $language,
