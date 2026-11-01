@@ -35,9 +35,25 @@
 
         .evo-ui-jrelations__form-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 14px;
-            align-items: end;
+            align-items: start;
+        }
+
+        .evo-ui-jrelations__field {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 5px;
+        }
+
+        .evo-ui-jrelations__field .evo-ui-field__label {
+            justify-content: flex-start;
+            min-height: 0;
+            text-align: left;
+        }
+
+        .evo-ui-jrelations__field .evo-ui-input {
+            width: 100%;
+            min-width: 0;
         }
 
         .evo-ui-jrelations__templates {
@@ -49,6 +65,11 @@
             padding: 14px;
             border: 1px solid var(--evo-ui-border);
             border-radius: var(--evo-ui-radius);
+        }
+
+        .evo-ui-jrelations__templates .evo-ui-field__hint {
+            grid-column: 1 / -1;
+            margin: 0;
         }
 
         .evo-ui-jrelations__template {
@@ -90,7 +111,11 @@
             color: var(--evo-ui-danger);
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 760px) {
+            .evo-ui-jrelations__form-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
             .evo-ui-jrelations {
                 padding: 16px;
             }
@@ -130,10 +155,10 @@
                     <h2>{{ $t('types_title') }}</h2>
                 </header>
 
-                <form method="post" action="{{ route('jRelations.types.store') }}" class="evo-ui-form-surface evo-ui-form-surface--density-compact">
+                <form method="post" action="{{ route('jRelations.types.store') }}">
                     @csrf
                     <div class="evo-ui-jrelations__form-grid">
-                        <label class="evo-ui-field">
+                        <label class="evo-ui-field evo-ui-jrelations__field">
                             <span class="evo-ui-field__label">{{ $t('slug') }}</span>
                             <input
                                 class="evo-ui-input"
@@ -146,12 +171,12 @@
                             >
                         </label>
 
-                        <label class="evo-ui-field">
+                        <label class="evo-ui-field evo-ui-jrelations__field">
                             <span class="evo-ui-field__label">{{ $t('name_uk') }}</span>
                             <input class="evo-ui-input" name="name_uk" value="{{ old('name_uk') }}" required maxlength="150">
                         </label>
 
-                        <label class="evo-ui-field">
+                        <label class="evo-ui-field evo-ui-jrelations__field">
                             <span class="evo-ui-field__label">{{ $t('name_en') }}</span>
                             <input class="evo-ui-input" name="name_en" value="{{ old('name_en') }}" maxlength="150">
                         </label>
