@@ -13,6 +13,7 @@
 - Evolution CMS `^3.5.7`
 - PHP `^8.3`
 - Composer
+- Evo UI is optional; when installed, the manager module uses its theme-aware interface.
 
 ## Встановлення
 
